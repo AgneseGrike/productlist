@@ -1,0 +1,22 @@
+{
+  "name": "productlist",
+  "description": "Concept for a product list page",
+  "main": "index.php",
+  "authors": [
+    "Agnese Grike agnese8grike@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/AgneseGrike/productlist",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bourbon": "^6.0.0",
+    "susy": "^3.0.5",
+    "normalize-css": "^8.0.1"
+  }
+}

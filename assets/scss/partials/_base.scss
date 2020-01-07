@@ -1,0 +1,79 @@
+body{
+    font-family: $font;
+    color: $fontColor;
+    font-size: 18px;
+}
+
+#wrap{
+    width: 60%;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: $fontColor;
+    padding-right: 20px;
+        &:hover {
+        color: darkgrey;
+        text-decoration: none;
+		}
+}
+
+.currentPage {
+    color: turquoise;
+}
+
+ul{
+    padding: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    list-style-type: none;
+    display: flex;
+    font-weight: bold;
+    
+}
+
+table{
+    width:100%;
+    th, td, tr {
+    border: 1px solid $fontColor;
+    padding: 5px;
+    }
+}
+
+.typeWrap {
+    margin-right: 20px;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+.skuGroup{
+    display: flex;
+}
+
+.sku {
+    width:45px !important;
+}
+
+.middle {
+    margin-left: 5px;
+    margin-right: 5px;
+    line-height: 38px;
+}
+
+.error {
+    color: orangered;
+}
+
+.success {
+    color: greenyellow;
+}
+
+
+@media only screen and (max-width: 800px) {
+    #wrap {
+        width: 94%;
+    }
+}
