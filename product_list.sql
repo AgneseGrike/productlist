@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 03, 2020 at 12:18 AM
+-- Generation Time: Jan 15, 2020 at 05:26 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -25,50 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attributes`
+-- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `attributes`;
-CREATE TABLE IF NOT EXISTS `attributes` (
-  `ID_attribute` int(6) NOT NULL AUTO_INCREMENT,
-  `type` varchar(11) NOT NULL,
-  PRIMARY KEY (`ID_attribute`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `attributes`
---
-
-INSERT INTO `attributes` (`ID_attribute`, `type`) VALUES
-(1, 'DVD'),
-(2, 'Book'),
-(3, 'Furniture');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
-
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
   `ID_SKU` int(6) NOT NULL AUTO_INCREMENT,
-  `SKU` varchar(5) NOT NULL,
+  `sku` varchar(5) NOT NULL,
   `name` varchar(64) NOT NULL,
   `price` decimal(6,2) NOT NULL,
-  `attrib` int(1) NOT NULL,
+  `type` varchar(11) NOT NULL,
   `value` varchar(11) NOT NULL,
   PRIMARY KEY (`ID_SKU`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `products`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `products` (`ID_SKU`, `SKU`, `name`, `price`, `attrib`, `value`) VALUES
-(1, 'BS-01', 'Six Of Crows', '20.00', 2, '0.8'),
-(2, 'DP-02', 'Parasite', '8.00', 1, '0.2'),
-(7, 'FN-03', 'NORDVIKEN', '49.99', 3, '157x117x51');
+INSERT INTO `product` (`ID_SKU`, `sku`, `name`, `price`, `type`, `value`) VALUES
+(1, 'BS-01', 'Six Of Crows', '20.00', 'Book', '0.8'),
+(2, 'DP-02', 'Parasite', '8.00', 'DVD', '0.2'),
+(3, 'FN-03', 'NORDVIKEN', '49.99', 'Furniture', '157x117x51');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
