@@ -17,7 +17,7 @@ function unitCast() {
         y = "Please provide dimensions in HxWxL format";
         z = "[0-9]{1,3}x[0-9]{1,3}x[0-9]{1,3}";
     }
-    document.getElementById('attribute').placeholder = x;
+    document.getElementById('value').placeholder = x;
     document.getElementById('tooltip').title = y;
-    document.getElementById('attribute').pattern = z;
+    document.getElementById('value').pattern = z;
 }

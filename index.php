@@ -1,7 +1,10 @@
 <?php
-include_once 'additions/dbConn.php';  
-
-include_once 'additions/header.php';
+include 'additions/database.php';
+include 'additions/product.php';
+include 'additions/header.php';
+include 'additions/productDB.php';
+include 'additions/productView.php';
+include 'additions/dbDelete.php';
 ?>
 
 <script>
@@ -25,17 +28,8 @@ include_once 'additions/header.php';
         <th>Value</th>
         </tr>
     <?php                
-        $sql = "SELECT products.ID_SKU, products.SKU, products.name, products.price, attributes.type, products.value from products inner JOIN attributes on products.attrib = attributes.ID_attribute;";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-
-        if ($resultCheck > 0) {                    
-            while ($row = mysqli_fetch_assoc($result)) {
-                $checkboxName=$row['ID_SKU'];
-                echo "<tr><td><input type='checkbox' class='selectOne' name='selectOne[]' value='$checkboxName'</td>
-                    <td>" . $row['ID_SKU'] . "</td><td>" .$row['SKU'] . "</td><td>" .$row['name'] . "</td><td>" . $row['price'] . " €</td><td>" . $row['type'] . "</td><td>" . $row['value'] . "</td></tr>"; 
-            }            
-        }        
+         $products = new productView();
+         $products->outputProducts();       
     ?>
     </table>
     <button type="sumbit" name="submit" class="btn btn-outline-secondary">Delete selected</button>
@@ -48,14 +42,16 @@ include_once 'additions/header.php';
         {            
             if(isset($_POST["selectAll"]))
             {   
-                mysqli_query($conn,"truncate table products");
+                $deleteProduct = new dbDelete();
+                $deleteProduct->truncate();
                 header("Refresh:0");
             }
             else {      
-                $checkedProducts = $_POST['selectOne'];                
+                $checkedProducts = $_POST["selectOne"];                
                 while (list ($key, $val) = @each ($checkedProducts))
                 {
-                    mysqli_query($conn,"delete from products where ID_SKU=$val");
+                    $deleteProduct = new dbDelete();
+                    $deleteProduct->delete($key);
                 }
                 header("Refresh:0");
             }
@@ -63,9 +59,7 @@ include_once 'additions/header.php';
     ?>
 
 <script>
-    // Checkbox behavior
-
-    //Delete selected
+    //Checkbox behavior
     $("#selectAll").click(function(){
         var x=document.getElementById("selectAll").checked;
         $("input[type=checkbox]:not(:first)").each(function(){
@@ -78,7 +72,7 @@ include_once 'additions/header.php';
         })
     });
 
-    //Select all
+    //Mass select behaviour
     $(".selectOne").click(function(){
         var x=document.getElementById("selectAll").checked;
         if(x == true)

@@ -1,5 +1,6 @@
 <?php
-include_once 'additions/header.php';
+include 'additions/header.php';
+include 'additions/product.php';
 ?>
 <script>
     document.getElementById('add').setAttribute("class", "currentPage");    
@@ -18,13 +19,13 @@ include_once 'additions/header.php';
 
         <div class="form-group inner-group">
             Product type:<br>
-                <span class="typeWrap"><input type="radio" name="type" value="1" id="dvd" onchange="unitCast()">DVD-disc</span>
-                <span class="typeWrap"><input type="radio" name="type" value="2" id="book" onchange="unitCast()">Book</span>
-                <span class="typeWrap"><input type="radio" name="type" value="3" id="furniture" onchange="unitCast()">Furniture</span><br>
+                <span class="typeWrap"><input type="radio" name="type" value="DVD" id="dvd" onchange="unitCast()">DVD-disc</span>
+                <span class="typeWrap"><input type="radio" name="type" value="Book" id="book" onchange="unitCast()">Book</span>
+                <span class="typeWrap"><input type="radio" name="type" value="Furniture" id="furniture" onchange="unitCast()">Furniture</span><br>
 
             <div title="Choose product type" id="tooltip">
-                Attribute:
-                <input type="text" name="attribute" placeholder="" class="form-control" id="attribute" pattern="">
+                Value:
+                <input type="text" name="value" placeholder="" class="form-control" id="value" pattern="">
             </div> 
         </div> <!-- inner-group -->
 
@@ -43,7 +44,7 @@ include_once 'additions/header.php';
 
         if(strpos($fullUrl, "signup=error") == true)
         {
-            echo "<p class='error'>idk</p>";
+            echo "<p class='error'>Error</p>";
             exit();
         }
 
