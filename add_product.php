@@ -1,6 +1,7 @@
 <?php
 include 'additions/header.php';
 include 'additions/product.php';
+include 'additions/submit.php';
 ?>
 <script>
     document.getElementById('add').setAttribute("class", "currentPage");    
@@ -31,35 +32,6 @@ include 'additions/product.php';
 
         <button type="submit" name="submit" class="btn btn-outline-secondary">Add product</button>
     </form>
-
-    <?php
-        // Error throwing
-        $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-        if(strpos($fullUrl, "signup=empty") == true)
-        {
-            echo "<p class='error'>All fields are required!</p>";
-            exit();
-        }
-
-        if(strpos($fullUrl, "signup=error") == true)
-        {
-            echo "<p class='error'>Error</p>";
-            exit();
-        }
-
-        if(strpos($fullUrl, "signup=SKUerror") == true)
-        {
-            echo "<p class='error'>SKU must be unique!</p>";
-            exit();
-        }
-
-        if(strpos($fullUrl, "signup=success") == true)
-        {
-            echo "<p class='success'>Product has been added!</p>";
-            exit();
-        }        
-    ?>
 </div> <!-- outer-group -->
 </div> <!-- wrap -->
 </body>

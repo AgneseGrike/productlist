@@ -5,6 +5,7 @@ include 'additions/header.php';
 include 'additions/productDB.php';
 include 'additions/productView.php';
 include 'additions/dbDelete.php';
+include 'additions/submit.php';
 ?>
 
 <script>
@@ -36,27 +37,6 @@ include 'additions/dbDelete.php';
     
     </form> <!-- form -->
     <br>
-
-    <?php 
-    if(isset($_POST["submit"]))
-        {            
-            if(isset($_POST["selectAll"]))
-            {   
-                $deleteProduct = new dbDelete();
-                $deleteProduct->truncate();
-                header("Refresh:0");
-            }
-            else {      
-                $checkedProducts = $_POST["selectOne"];                
-                while (list ($key, $val) = @each ($checkedProducts))
-                {
-                    $deleteProduct = new dbDelete();
-                    $deleteProduct->delete($key);
-                }
-                header("Refresh:0");
-            }
-        }
-    ?>
 
 <script>
     //Checkbox behavior

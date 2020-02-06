@@ -1,4 +1,6 @@
 <?php 
+include 'database.php';
+include 'dbInsert.php';
 
 abstract class Product {
     public $SKU; 
@@ -12,6 +14,10 @@ abstract class Product {
     //public function __destruct() {}
 
     abstract function setType();
+
+    public function addProduct() {
+        ValidateValue();
+    }
 }
 
 class DVD extends Product{
@@ -52,3 +58,4 @@ class Furniture extends Product{
         $this->value = $value;
     }    
 }
+
